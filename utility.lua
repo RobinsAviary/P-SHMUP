@@ -17,22 +17,14 @@ function btndly(delay, freq)
 	poke(0x5f5c, delay, freq) 
 end
 
-Vector2 = {
-	x = 0,
-	y = 0,
-   }
-   
-   function Vector2:new(xpos, ypos) 
-	t = {}
-	setmetatable(t, self)
-	self.__index = self
-	self.x = xpos or 0;
-	self.y = ypos or 0;
-   
-	return t
-   end
+function scalartoperc(scalar)
+	return sub(tostr(scalar * 100), 0, 5) .. "%"
+end
 
-function Vector2:Add(vec)
- self.x += vec.x
- self.y += vec.y
+function getramusage()
+	return scalartoperc(stat(0)/2048)
+end
+
+function getdebuginfo()
+	return "ram: " .. getramusage() .. "\ncpu: " ..  scalartoperc(stat(1))
 end
