@@ -1,4 +1,6 @@
 Player = Obj:new({
+    upperBound = 64,
+
     sprindex = 1,
     fliph = false,
 

@@ -1,9 +1,10 @@
 function _init()
- 	btndly(3,3) -- disable btnp multiples
+ 	btndly(3,3)
  	for i=0,31 do
   		add(Stars, Star:new())
  	end
 	add(Objs, Player:new())
+	add(Objs, Ship:new())
 end
 
 function drawhudBG()
@@ -15,6 +16,7 @@ end
 -- WE'RE RUNNIN AT SUPERSPEED BABY
 function _update60()
 	updateInput()
+	UpdateStarSpeedOffset()
  	cls(0) -- clear screen
  	iteratecollection(Stars)
 	iteratecollection(Bullets)

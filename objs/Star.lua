@@ -1,3 +1,24 @@
+StarSpdOffset = {
+    x = 0,
+    y = 0,
+}
+
+function UpdateStarSpeedOffset()
+    StarSpdOffset.x = stween(StarSpdOffset.x, Input.x, .05)
+
+    local ygoal = StarSpdOffset.y
+
+    if Input.y < 0 then
+        ygoal = -.25
+    end
+
+    if Input.y > 0 then
+        ygoal = .1
+    end
+
+    StarSpdOffset.y = stween(ygoal, Input.y, .05)
+end
+
 Star = Obj:new({
     size = 0,
     color = 1,
@@ -34,12 +55,15 @@ Star = Obj:new({
             self.y += rndrng(-5,5)
         end
 
-        self.x += -Input.x * (self.yspd / 2)
+        local spdDiv = self.yspd / 2
+
+        self.x += -StarSpdOffset.x * spdDiv * 2 -- Multiply by star speed for parallax
+        self.y += -StarSpdOffset.y * spdDiv * 5
     end,
 
     randomize=function(self)
         self.x = rndrng(32 - 4,32 + 64 + 4 - self.size)
-        self.yspd = rndrng(0.5, 1.25)
+        self.yspd = rndrng(0.5, 1.75)
         if self.yspd < .88 then
             --elf.size = 0
             self.color = 1
