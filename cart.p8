@@ -1,7 +1,11 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
+-- shmup
+-- robinsaviary.com
+
 #include global.lua
+#include input.lua
 #include utility.lua
 #include objs.lua
 #include main.lua

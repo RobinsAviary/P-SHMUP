@@ -1,2 +1,3 @@
-Objs = {}
 Stars = {}
+Bullets = {}
+Objs = {}
