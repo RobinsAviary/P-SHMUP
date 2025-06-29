@@ -20,5 +20,5 @@ function _update60()
 	iteratecollection(Bullets)
  	iteratecollection(Objs)
 	drawhudBG()
- 	print(getdebuginfo(),0,0,7)
+	print(getdebuginfo(),0,0,7)
 end

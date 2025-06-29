@@ -53,6 +53,20 @@ Star = Obj:new({
             self.y = -8
             self:randomize()
         end
+
+        local sidebounds = 32 - 4
+
+        if self.x < sidebounds then
+            self.x += 64 + 8
+            self.y += rndrng(-5,5)
+        end
+
+        if self.x > 128 - sidebounds then
+            self.x -= 64 + 8
+            self.y += rndrng(-5,5)
+        end
+
+        self.x += -Input.x * (self.yspd / 2)
     end,
 
     randomize=function(self)

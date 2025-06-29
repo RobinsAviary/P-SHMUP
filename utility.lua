@@ -1,5 +1,5 @@
-function rndrng(min, max)
-    return min + rnd(max - min)
+function rndrng(mn, mx)
+    return mn + rnd(mx - mn)
 end
 
 function iteratecollection(coll)
@@ -54,4 +54,25 @@ function coll(a, b)
 	end
 
 	return true
+end
+
+function clamp(val, mn, mx)
+	local lower = val >= min
+	local upper = val <= mx
+
+	if lower and upper then 
+		return val
+	elseif lower == false then
+		return lower
+	else
+		return upper
+	end
+end
+
+function remap(lower1, upper1, lower2, upper2, value)
+	return (scalar(lower1, upper1, value) * (upper2 - lower2)) + lower2
+end
+
+function scalar(lower, upper, value)
+	return (value - lower) / (upper - lower)
 end
