@@ -1,5 +1,5 @@
 function _init()
- 	btndly(5,5) -- disable btnp multiples
+ 	btndly(3,3) -- disable btnp multiples
  	for i=0,31 do
   		add(Stars, Star:new())
  	end

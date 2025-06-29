@@ -7,7 +7,9 @@ __lua__
 #include global.lua
 #include input.lua
 #include utility.lua
-#include objs.lua
+#include objs/Obj.lua
+#include objs/Player.lua
+#include objs/Star.lua
 #include main.lua
 __gfx__
 000000000000000000000000700000001111dddd11d1000000001ddd000000008770000000000000000000000000080000000000000000000000000000000000
