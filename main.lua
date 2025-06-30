@@ -4,39 +4,56 @@ function _init()
   		add(Stars, Star:new())
  	end
 	player = Player:new()
-	add(Objs, player)
-	add(Ships, Ship:new())
+	add(Players, player)
 	add(Ships, Ship:new())
 	caution = Caution:new()
 	add(CautionBar, caution)
 end
 
-function drawhudBG()
+function drawborder()
  	for i=0,16 do
   		map(0,0,0,(i*8) - 2,16,1)
  	end
 end
 
 -- Effectively layers
-Collections = {
+Layers = {
 	CautionBar,
+	Players,
 	Bullets,
 	Ships,
 	Objs,
 }
 
+function managePlanets()
+	if PlanetTimer > 0 then
+		PlanetTimer -= 1
+	else
+		PlanetTimer = getRandomPlanetTime()
+		add(Planets, Planet:new())
+	end
+end
+
 function preobjUpdates()
 	updateInput()
 	UpdateStarSpeedOffset()
+	managePlanets()
 end
 
 function IterateCollections()
+	iteratecollection(Planets)
 	IterateStars()
-	
-	for collection in all(Collections) do
-		iteratecollection(collection)
+
+	for layer in all(Layers) do
+		iteratecollection(layer)
 	end
 end
+
+function getRandomPlanetTime()
+	return flr(rndrng(10,15) * 60)
+end
+
+PlanetTimer = getRandomPlanetTime() / 4
 
 -- WE'RE RUNNIN AT SUPERSPEED BABY
 function _update60()
@@ -44,7 +61,8 @@ function _update60()
  	cls(0) -- clear screen
 	
 	IterateCollections()
+	iteratecoroutines()
 
-	drawhudBG()
+	drawborder()
 	print(getdebuginfo(),0,0,7)
 end

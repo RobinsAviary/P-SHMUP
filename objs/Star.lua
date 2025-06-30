@@ -37,12 +37,6 @@ function IterateStars()
         end
     end
 
-    function iterateDraw(collection)
-        for item in all(collection) do
-            item:draw()
-        end
-    end
-
     iterateDraw(LowerLayer)
     iterateDraw(MiddleLayer)
     iterateDraw(UpperLayer)
@@ -53,7 +47,15 @@ Star = Obj:new({
     layer = 0, -- Higher are above
     draw=function(self)
         if self.si == 0 then
-            pset(self.x, self.y, self.color)
+            local dodraw = true
+            if self.color == 1 or self.color == 6 then
+                if pget(self.x, self.y) != 0 then
+                    dodraw = false
+                end
+            end
+            if dodraw then
+                pset(self.x, self.y, self.color)
+            end
         else
             self:drawself()
         end
@@ -95,25 +97,25 @@ Star = Obj:new({
     end,
 
     randomize=function(self)
-        si = 0
+        self.si = 0
 
         self.x = rndrng(32 - 4,32 + 64 + 4)
         self.yspd = rndrng(0.5, 1.75)
         if self.yspd < .88 then
             self.color = 1
             self.layer = 0
-            if flr(rnd(40)) == 0 then
-                self.si = 15
-            end
         elseif self.yspd > 1.12 then
             self.color = 6
             self.layer = 1
-            if flr(rnd(25)) == 0 then
-                self.si = 14
+            if flr(rnd(10)) == 0 then
+                self.si = 15
             end
         else
             self.color = 13
             self.layer = 2
+            if flr(rnd(7)) == 0 then
+                self.si = 14
+            end
         end
     end,
 })

@@ -36,6 +36,6 @@ Caution = Obj:new({
             finalOffset += 8
         end
 
-        sprrpt(12, self.x + finalOffset, self.y, 10, 1, 2, 1)
+        sprrpt(12, self.x + finalOffset, self.y, 6, 1, 2, 1)
     end,
 })

@@ -21,6 +21,8 @@ Obj = {
         tbl=tbl or {}
             setmetatable(tbl, {
                 __index=self,
+
+                
             })
         return tbl
     end,
@@ -53,4 +55,13 @@ Obj = {
     getcentery=function(self)
         return 64 - (self.sh * 4)
     end,
+
+    getwidth=function(self)
+        return self.sw * 8
+    end,
+
+    getheight=function(self)
+        return self.sh * 8
+    end,
+    
 }
