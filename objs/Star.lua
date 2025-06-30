@@ -52,7 +52,11 @@ Star = Obj:new({
     color = 1,
     layer = 0, -- Higher are above
     draw=function(self)
-        pset(self.x, self.y, self.color)
+        if self.si == 0 then
+            pset(self.x, self.y, self.color)
+        else
+            self:drawself()
+        end
     end,
 
     new=function(self,tbl)
@@ -91,14 +95,22 @@ Star = Obj:new({
     end,
 
     randomize=function(self)
+        si = 0
+
         self.x = rndrng(32 - 4,32 + 64 + 4)
         self.yspd = rndrng(0.5, 1.75)
         if self.yspd < .88 then
             self.color = 1
             self.layer = 0
+            if flr(rnd(40)) == 0 then
+                self.si = 15
+            end
         elseif self.yspd > 1.12 then
             self.color = 6
             self.layer = 1
+            if flr(rnd(25)) == 0 then
+                self.si = 14
+            end
         else
             self.color = 13
             self.layer = 2

@@ -108,3 +108,9 @@ function makeColl(x, y, w, h)
 		h = h,
 	}
 end
+
+function iterateDraw(collection)
+	for item in all(collection) do
+		item:draw()
+	end
+end
