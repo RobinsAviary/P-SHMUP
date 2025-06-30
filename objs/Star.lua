@@ -20,10 +20,9 @@ function UpdateStarSpeedOffset()
 end
 
 Star = Obj:new({
-    size = 0,
     color = 1,
     draw=function(self)
-        rect(self.x, self.y, self.x + self.size, self.y + self.size, self.color)
+        pset(self.x, self.y, self.color)
     end,
 
     new=function(self,tbl)
@@ -62,13 +61,11 @@ Star = Obj:new({
     end,
 
     randomize=function(self)
-        self.x = rndrng(32 - 4,32 + 64 + 4 - self.size)
+        self.x = rndrng(32 - 4,32 + 64 + 4)
         self.yspd = rndrng(0.5, 1.75)
         if self.yspd < .88 then
-            --elf.size = 0
             self.color = 1
         elseif self.yspd > 1.12 then
-            --self.size = 1
             self.color = 6
         else
             self.color = 13

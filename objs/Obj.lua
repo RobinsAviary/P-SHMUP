@@ -45,4 +45,12 @@ Obj = {
     collision=function(self,other)
 
     end,
+
+    getcenterx=function(self)
+        return 64 - (self.sw * 4)
+    end,
+
+    getcentery=function(self)
+        return 64 - (self.sh * 4)
+    end,
 }

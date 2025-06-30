@@ -16,15 +16,31 @@ function drawhudBG()
  	end
 end
 
--- WE'RE RUNNIN AT SUPERSPEED BABY
-function _update60()
+-- Effectively layers
+Collections = {
+	Stars,
+	CautionBar,
+	Bullets,
+	Objs,
+}
+
+function preobjUpdates()
 	updateInput()
 	UpdateStarSpeedOffset()
+end
+
+function IterateCollections()
+	for collection in all(Collections) do
+		iteratecollection(collection)
+	end
+end
+
+-- WE'RE RUNNIN AT SUPERSPEED BABY
+function _update60()
+	preobjUpdates()
  	cls(0) -- clear screen
-	iteratecollection(Stars)
-	iteratecollection(CautionBar)
-	iteratecollection(Bullets)
- 	iteratecollection(Objs)
+	IterateCollections()
+
 	drawhudBG()
 	print(getdebuginfo(),0,0,7)
 end

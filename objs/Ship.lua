@@ -5,7 +5,7 @@ Ship = Obj:new({
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
 
-        self.x = 128 /2
+        self.x = self:getcenterx()
 
         return tbl
     end,

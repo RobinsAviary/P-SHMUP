@@ -4,7 +4,7 @@ Player = Obj:new({
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
 
-        tbl.x = 60
+        tbl.x = self:getcenterx()
         tbl.y = 128 - 16
 
         return tbl
