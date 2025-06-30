@@ -6,6 +6,7 @@ function _init()
 	player = Player:new()
 	add(Objs, player)
 	add(Ships, Ship:new())
+	add(Ships, Ship:new())
 	caution = Caution:new()
 	add(CautionBar, caution)
 end
@@ -18,7 +19,6 @@ end
 
 -- Effectively layers
 Collections = {
-	Stars,
 	CautionBar,
 	Bullets,
 	Ships,
@@ -31,6 +31,8 @@ function preobjUpdates()
 end
 
 function IterateCollections()
+	IterateStars()
+	
 	for collection in all(Collections) do
 		iteratecollection(collection)
 	end
@@ -40,6 +42,7 @@ end
 function _update60()
 	preobjUpdates()
  	cls(0) -- clear screen
+	
 	IterateCollections()
 
 	drawhudBG()

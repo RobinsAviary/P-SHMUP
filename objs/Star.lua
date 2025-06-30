@@ -3,6 +3,7 @@ StarSpdOffset = {
     y = 0,
 }
 
+-- Responsible for the player movement effects
 function UpdateStarSpeedOffset()
     StarSpdOffset.x = stween(StarSpdOffset.x, Input.x, .05)
 
@@ -19,8 +20,39 @@ function UpdateStarSpeedOffset()
     StarSpdOffset.y = stween(ygoal, Input.y, .05)
 end
 
+function IterateStars()
+    local LowerLayer = {}
+    local MiddleLayer = {}
+    local UpperLayer = {}
+
+    for star in all(Stars) do
+        star:step()
+
+        if star.layer == 0 then
+            add(LowerLayer, star)
+        elseif star.layer == 1 then
+            add(MiddleLayer, star)
+        elseif star.layer == 2 then
+            add(UpperLayer, star)
+        end
+    end
+
+    for star in all(LowerLayer) do
+        star:draw()
+    end
+
+    for star in all(MiddleLayer) do
+        star:draw()
+    end
+
+    for star in all(UpperLayer) do
+        star:draw()
+    end
+end
+
 Star = Obj:new({
     color = 1,
+    layer = 0, -- Higher are above
     draw=function(self)
         pset(self.x, self.y, self.color)
     end,
@@ -65,10 +97,13 @@ Star = Obj:new({
         self.yspd = rndrng(0.5, 1.75)
         if self.yspd < .88 then
             self.color = 1
+            self.layer = 0
         elseif self.yspd > 1.12 then
             self.color = 6
+            self.layer = 1
         else
             self.color = 13
+            self.layer = 2
         end
     end,
 })

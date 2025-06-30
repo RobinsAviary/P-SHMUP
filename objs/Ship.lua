@@ -4,6 +4,8 @@ Ship = Obj:new({
     si = 2,
 
     coll = makeColl(0,0,8,8),
+    shottimer = 60,
+    shottimermax = 60,
 
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
@@ -16,7 +18,7 @@ Ship = Obj:new({
 
     step=function(self)
         for bullet in all(Bullets) do
-            if collTest(self, bullet) then
+            if bullet.player and collTest(self, bullet) then
                 local e = Explosion:new()
                 e.x = self.x
                 e.y = self.y
@@ -24,6 +26,19 @@ Ship = Obj:new({
                 del(Bullets, bullet)
                 del(Ships, self)
             end
+        end
+
+        if self.shottimer > 0 then
+            self.shottimer -= 1
+        else
+            self.shottimer = self.shottimermax
+            local b = Bullet:new()
+            b.x = self.x
+            b.y = self.y
+            b.yspd = 1
+            b.player =false
+
+            add(Bullets, b)
         end
     end,
 
