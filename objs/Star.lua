@@ -37,17 +37,15 @@ function IterateStars()
         end
     end
 
-    for star in all(LowerLayer) do
-        star:draw()
+    function iterateDraw(collection)
+        for item in all(collection) do
+            item:draw()
+        end
     end
 
-    for star in all(MiddleLayer) do
-        star:draw()
-    end
-
-    for star in all(UpperLayer) do
-        star:draw()
-    end
+    iterateDraw(LowerLayer)
+    iterateDraw(MiddleLayer)
+    iterateDraw(UpperLayer)
 end
 
 Star = Obj:new({
