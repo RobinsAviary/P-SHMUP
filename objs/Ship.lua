@@ -1,6 +1,7 @@
 -- Used for enemy ships only, as they have different movement
 
 Ship = Obj:new({
+    si = 2,
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
 
@@ -14,6 +15,6 @@ Ship = Obj:new({
     end,
 
     draw=function(self)
-        spr(2, self.x, self.y)
+        self:drawself()
     end,
 })

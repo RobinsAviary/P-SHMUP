@@ -10,6 +10,12 @@ Obj = {
         w = 0,
         h = 0,
     },
+    -- Sprite flags
+    si = 0, -- index
+    sw = 1, -- width
+    sh = 1, -- height
+    sfh = false, -- flip horizontal
+    sfv = false, -- flip vertical
 
     new=function(self, tbl)
         tbl=tbl or {}
@@ -29,7 +35,11 @@ Obj = {
     end,
 
     draw=function(self)
-  
+        
+    end,
+
+    drawself=function(self)
+        spr(self.si, self.x, self.y, self.sw, self.sh, self.sfh, self.sfv)
     end,
 
     collision=function(self,other)

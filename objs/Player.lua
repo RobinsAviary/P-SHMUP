@@ -1,6 +1,5 @@
 Player = Obj:new({
-    sprindex = 1,
-    fliph = false,
+    si = 1,
 
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
@@ -18,15 +17,15 @@ Player = Obj:new({
         local leftbound = 32 - 4 - 3
         
         if Input.x != 0 then
-            self.sprindex = 7
+            self.si = 7
         else
-            self.sprindex = 1
+            self.si = 1
         end
 
         if Input.x > 0 then
-            self.fliph = true
+            self.sfh = true
         else
-            self.fliph = false
+            self.sfh = false
         end
 
         -- bounds checking
@@ -60,7 +59,6 @@ Player = Obj:new({
         if (Input.y != 0) then
             spr(9 + time() * 5 % 2, self.x, self.y + 2)
         end
-
-        spr(self.sprindex,self.x, self.y, 1, 1, self.fliph)
+        self:drawself()
     end,
 })

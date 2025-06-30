@@ -12,7 +12,7 @@ end
 
 function drawhudBG()
  	for i=0,16 do
-  		map(0,0,0,(i*8) - 1,16,1)
+  		map(0,0,0,(i*8) - 2,16,1)
  	end
 end
 
