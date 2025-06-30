@@ -1,6 +1,7 @@
 CautionBar = {}
 Stars = {}
 Bullets = {}
+Ships = {}
 Objs = {}
 
 PlayerUpper = 64 + 16

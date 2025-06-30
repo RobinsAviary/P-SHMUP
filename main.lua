@@ -5,7 +5,7 @@ function _init()
  	end
 	player = Player:new()
 	add(Objs, player)
-	add(Objs, Ship:new())
+	add(Ships, Ship:new())
 	caution = Caution:new()
 	add(CautionBar, caution)
 end
@@ -21,6 +21,7 @@ Collections = {
 	Stars,
 	CautionBar,
 	Bullets,
+	Ships,
 	Objs,
 }
 

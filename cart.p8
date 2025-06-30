@@ -8,6 +8,7 @@ __lua__
 #include input.lua
 #include utility.lua
 #include objs/Obj.lua
+#include objs/Explosion.lua
 #include objs/Caution.lua
 #include objs/Bullet.lua
 #include objs/Ship.lua

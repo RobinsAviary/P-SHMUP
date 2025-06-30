@@ -1,22 +1,21 @@
-Bullet = Obj:new({
-    yspd = -2,
-    si = 3,
-
-    coll = makeColl(0,0,1,4),
-
+Explosion = Obj:new({
+    si = 11,
+    timer = 15,
     new = function(self, tbl)
         tbl = Obj.new(self, tbl)
 
-        sfx(0)
+        sfx(1)
+        sfx(2)
+        sfx(3)
 
         return tbl
     end,
 
     step=function(self)
-        self:move()
-
-        if self.y < -8 then
-            del(Bullets, self)
+        if self.timer > 0 then
+            self.timer -= 1
+        else
+            del(Objs, self)
         end
     end,
 

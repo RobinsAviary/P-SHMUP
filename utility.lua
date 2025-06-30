@@ -29,27 +29,39 @@ function getdebuginfo()
 	return "ram: " .. getramusage() .. "\ncpu: " ..  scalartoperc(stat(1))
 end
 
-function makeBounds(xPos, yPos, width, height)
+function makeBounds(x, y, x2, y2)
 	return {
-		x = xPos,
-		y = yPos,
-		w = width,
-		h = height,
+		x = x,
+		y = y,
+		x2 = x2,
+		y2 = y2,
 	}
 end
 
 function absBounds(bounds)
-	return makeBounds(abs(bounds.x), abs(bounds.y), abs(bounds.w), abs(bounds.h))
+	return makeBounds(abs(bounds.x), abs(bounds.y), abs(bounds.x2), abs(bounds.y2))
 end
 
-function coll(a, b)
+function collTest(obj1, obj2)
+	local a = {}
+	local b = {}
+	a.x = obj1.x + obj1.coll.x
+	a.y = obj1.y + obj1.coll.y
+	b.x = obj2.x + obj2.coll.x
+	b.y = obj2.y + obj2.coll.y
+	
+	a.x2 = a.x + obj1.coll.w
+	a.y2 = a.y + obj1.coll.h
+	b.x2 = b.x + obj2.coll.w
+	b.y2 = b.y + obj2.coll.h
+
 	a = absBounds(a)
 	b = absBounds(b)
 
-	if a.x1 > a.x2 or
-	a.y1 > b.y2 or
-	b.x1 > a.x2 or
-	b.y1 > a.y2 then
+	if a.x > b.x2 or
+	a.y > b.y2 or
+	b.x > a.x2 or
+	b.y > a.y2 then
 		return false
 	end
 
@@ -86,4 +98,13 @@ function sprrpt(ind, x, y, rw, rh, sw, sh)
 			spr(ind, x + (xx * (sw * 8)), y + (yy * (sh * 8)), sw, sh)
 		end
 	end
+end
+
+function makeColl(x, y, w, h)
+	return {
+		x = x,
+		y = y,
+		w = w,
+		h = h,
+	}
 end
