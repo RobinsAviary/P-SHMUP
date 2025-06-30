@@ -76,3 +76,14 @@ end
 function scalar(lower, upper, value)
 	return (value - lower) / (upper - lower)
 end
+
+function sprrpt(ind, x, y, rw, rh, sw, sh)
+	sw = sw or 1;
+	sh = sh or 1;
+
+	for xx=0,rw-1 do
+		for yy=0,rh-1 do
+			spr(ind, x + (xx * (sw * 8)), y + (yy * (sh * 8)), sw, sh)
+		end
+	end
+end

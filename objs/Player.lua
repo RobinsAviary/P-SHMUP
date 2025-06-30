@@ -1,6 +1,4 @@
 Player = Obj:new({
-    upperBound = 64,
-
     sprindex = 1,
     fliph = false,
 
@@ -31,6 +29,7 @@ Player = Obj:new({
             self.fliph = false
         end
 
+        -- bounds checking
         if self.x < leftbound then
             self.x = leftbound
         end
@@ -41,6 +40,10 @@ Player = Obj:new({
 
         if self.y > 128-8+3 then
             self.y = 128-8+3
+        end
+
+        if self.y < 128 - PlayerUpper - 4 then
+            self.y = 128 - PlayerUpper - 4
         end
 
         if Input.zp then
@@ -59,29 +62,5 @@ Player = Obj:new({
         end
 
         spr(self.sprindex,self.x, self.y, 1, 1, self.fliph)
-    end,
-})
-
-Bullet = Obj:new({
-    yspd = -2,
-
-    new = function(self, tbl)
-        tbl = Obj.new(self, tbl)
-
-        sfx(0)
-
-        return tbl
-    end,
-
-    step=function(self)
-        self:move()
-
-        if self.y < -8 then
-            del(Bullets, self)
-        end
-    end,
-
-    draw=function(self)
-        spr(3, self.x, self.y)
     end,
 })

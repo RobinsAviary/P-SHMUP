@@ -13,7 +13,7 @@ function UpdateStarSpeedOffset()
     end
 
     if Input.y > 0 then
-        ygoal = .1
+        ygoal = .05
     end
 
     StarSpdOffset.y = stween(ygoal, Input.y, .05)

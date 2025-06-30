@@ -3,6 +3,13 @@ Obj = {
     y = 0,
     xspd = 0,
     yspd = 0,
+    collflag = false,
+    coll = {
+        x = 0,
+        y = 0,
+        w = 0,
+        h = 0,
+    },
 
     new=function(self, tbl)
         tbl=tbl or {}
@@ -23,5 +30,9 @@ Obj = {
 
     draw=function(self)
   
+    end,
+
+    collision=function(self,other)
+
     end,
 }

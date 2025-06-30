@@ -3,8 +3,11 @@ function _init()
  	for i=0,31 do
   		add(Stars, Star:new())
  	end
-	add(Objs, Player:new())
+	player = Player:new()
+	add(Objs, player)
 	add(Objs, Ship:new())
+	caution = Caution:new()
+	add(CautionBar, caution)
 end
 
 function drawhudBG()
@@ -18,7 +21,8 @@ function _update60()
 	updateInput()
 	UpdateStarSpeedOffset()
  	cls(0) -- clear screen
- 	iteratecollection(Stars)
+	iteratecollection(Stars)
+	iteratecollection(CautionBar)
 	iteratecollection(Bullets)
  	iteratecollection(Objs)
 	drawhudBG()
