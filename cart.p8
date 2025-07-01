@@ -1,12 +1,12 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
--- shmup
+-- r-space
 -- robinsaviary.com
 
 #include global.lua
-#include input.lua
 #include utility.lua
+#include RP-Base/input.lua
 #include RP-Base/utility.lua
 #include RP-Base/coroutines.lua
 #include RP-Base/Obj.lua

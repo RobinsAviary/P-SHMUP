@@ -26,7 +26,13 @@ Planet = Obj:new({
             del(Planets, self)
         end
         self.x += -StarSpdOffset.x * .25
-        self.y += self.yspd + (-StarSpdOffset.y * .75)
+
+        local mul = .75
+
+        if StarSpdOffset.y > 0 then
+            mul *= .5
+        end
+        self.y += self.yspd + (-StarSpdOffset.y * mul)
     end,
 
     draw=function(self)
