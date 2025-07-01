@@ -73,3 +73,9 @@ end
 function lerp(a,b,t)
 	return a+(b-a)*t
 end
+
+function palall(col)
+	for i=0,15 do
+		pal(i, col)
+	end
+end

@@ -59,6 +59,8 @@ Player = Obj:new({
         if (Input.y != 0) then
             spr(9 + time() * 5 % 2, self.x, self.y + 2)
         end
+        palall(5)
         self:drawself()
+        pal()
     end,
 })
