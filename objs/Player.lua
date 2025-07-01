@@ -1,5 +1,6 @@
 Player = Obj:new({
     si = 1,
+    palFlag = true,
 
     new=function(self,tbl)
         tbl=Obj.new(self, tbl)
@@ -59,7 +60,14 @@ Player = Obj:new({
         if (Input.y != 0) then
             spr(9 + time() * 5 % 2, self.x, self.y + 2)
         end
-        palall(5)
+        if self.palFlag then
+            pal(9, 1)
+            pal(1, 7)
+            --pal(13, 1)
+            pal(2, 6)
+            pal(14, 13)
+            --palall(5)
+        end
         self:drawself()
         pal()
     end,

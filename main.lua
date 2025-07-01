@@ -8,6 +8,14 @@ function _init()
 	add(Ships, Ship:new())
 	caution = Caution:new()
 	add(CautionBar, caution)
+	--[[async(function()
+
+
+		while true do
+			wait(60)	
+			add(Ships, Ship:new())
+		end
+	end)]]--
 end
 
 function drawborder()
