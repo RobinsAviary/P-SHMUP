@@ -69,3 +69,7 @@ function iterateDraw(collection)
 		item:draw()
 	end
 end
+
+function lerp(a,b,t)
+	return a+(b-a)*t
+end

@@ -2,6 +2,7 @@ SpriteOptions = {
     20,
     22,
     24,
+    27,
 }
 
 Planet = Obj:new({
