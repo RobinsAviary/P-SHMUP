@@ -1,32 +1,8 @@
-function rndrng(mn, mx)
-    return mn + rnd(mx - mn)
-end
-
 function iteratecollection(coll)
 	for item in all(coll) do
 		item:step()
 		item:draw()
 	end
-end
-
-function stween(val, goal, amnt)
-	return val + (goal - val) * amnt
-end
-
-function btndly(delay, freq)
-	poke(0x5f5c, delay, freq) 
-end
-
-function scalartoperc(scalar)
-	return sub(tostr(scalar * 100), 0, 5) .. "%"
-end
-
-function getramusage()
-	return scalartoperc(stat(0)/2048)
-end
-
-function getdebuginfo()
-	return "ram: " .. getramusage() .. "\ncpu: " ..  scalartoperc(stat(1))
 end
 
 function makeBounds(x, y, x2, y2)
@@ -66,27 +42,6 @@ function collTest(obj1, obj2)
 	end
 
 	return true
-end
-
-function clamp(val, mn, mx)
-	local lower = val >= min
-	local upper = val <= mx
-
-	if lower and upper then 
-		return val
-	elseif lower == false then
-		return lower
-	else
-		return upper
-	end
-end
-
-function remap(lower1, upper1, lower2, upper2, value)
-	return (scalar(lower1, upper1, value) * (upper2 - lower2)) + lower2
-end
-
-function scalar(lower, upper, value)
-	return (value - lower) / (upper - lower)
 end
 
 function sprrpt(ind, x, y, rw, rh, sw, sh)

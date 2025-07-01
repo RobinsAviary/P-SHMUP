@@ -7,7 +7,8 @@ __lua__
 #include global.lua
 #include input.lua
 #include utility.lua
-#include coroutines.lua
+#include RP-Base/utility.lua
+#include RP-Base/coroutines.lua
 #include RP-Base/Obj.lua
 #include objs/Explosion.lua
 #include objs/Caution.lua
