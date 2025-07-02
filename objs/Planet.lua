@@ -12,6 +12,7 @@ Planet = Obj:new({
     sw = 2,
     sh = 2,
     yspd = .125,
+    palFlag = false,
 
     new = function(self, tbl)
         tbl = Obj.new(self, tbl)
@@ -20,6 +21,16 @@ Planet = Obj:new({
         tbl.y = -tbl:getheight()
         tbl.si = rnd(SpriteOptions)
         tbl.yspd = rndrng(.05,.125)
+
+        async(function()
+            while Planets[self]!=nil do
+                print("tssssssssssssssssssst")
+                wait(30)
+                Planets[self].palFlag = true
+                wait(30)
+                Planets[self].palFlag = false
+            end
+        end)
 
         return tbl
     end,
@@ -39,6 +50,12 @@ Planet = Obj:new({
     end,
 
     draw=function(self)
+        if (palFlag) then
+            palall(3)
+        end
         self:drawself()
+        if (palFlag) then
+            pal()
+        end
     end,
 })
