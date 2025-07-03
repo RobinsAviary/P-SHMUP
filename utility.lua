@@ -55,19 +55,13 @@ function sprrpt(ind, x, y, rw, rh, sw, sh)
 	end
 end
 
-function makeColl(x, y, w, h)
+function RectMake(x, y, w, h)
 	return {
-		x = x,
-		y = y,
-		w = w,
-		h = h,
+		x = x or 0,
+		y = y or 0,
+		w = w or 0,
+		h = h or 0,
 	}
-end
-
-function iterateDraw(collection)
-	for item in all(collection) do
-		item:draw()
-	end
 end
 
 function lerp(a,b,t)
@@ -93,4 +87,13 @@ function deepcopy(orig)
         copy = orig
     end
     return copy
+end
+
+function DrawRect(rct, color)
+	rect(rct.x, rct.y, rct.x + rct.w, rct.y + rct.h, color)
+end
+
+function DrawHull(obj, color)
+	local rct = RectMake(obj.p.x + obj.hull.x, obj.p.y + obj.hull.y, obj.hull.w, obj.hull.h)
+	DrawRect(rct, color)
 end

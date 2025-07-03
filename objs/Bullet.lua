@@ -11,8 +11,9 @@ end
 Bullet.proto = {
     p=Vec2Make(Center, ScreenSize - 16),
     s=SpriteMake(3, nil, Vec2Make(4,4)),
-    spd=Vec2Make(0,-1),
+    spd=Vec2Make(0,-2),
     step=BulletStep,
+    layer="playerbullets"
 }
 
 function BulletMake(t)

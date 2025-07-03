@@ -22,7 +22,12 @@ function _update60()
  	cls(0) -- clear screen
 
 	drawborder()
-	IterateCollection(Objs)
+	iteratecoroutines()
+	IterateObjCoroutines(Objs)
+	IterateCollection(Objs, "step")
+	IterateLayer(Objs, "playerbullets")
+	IterateLayer(Objs, "player")
+	IterateLayer(Objs, nil)
 	
 	print(getdebuginfo(),0,0,7)
 end
