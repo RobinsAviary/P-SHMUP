@@ -1,4 +1,4 @@
-Caution = Obj:new({
+--[[Caution = Obj:new({
     offset = 0,
 
     animTimer = 0,
@@ -38,4 +38,26 @@ Caution = Obj:new({
 
         sprrpt(12, self.x + finalOffset, self.y, 6, 1, 2, 1)
     end,
-})
+})]]--
+
+Caution = {}
+
+function CautionStep(self)
+    ObjMove(self)
+
+    if self.p.y<-32 then
+        del(Objs, self)
+    end
+end
+
+Caution.proto = {
+    s = SpriteMake(12, Vec2Make(2,1)),
+    layer = "caution",
+}
+
+function CautionMake(t)
+    local t = t or {} -- Allows user to pass in values
+    local copy = deepcopy(ObjMake(Caution.proto)) -- Copy the prototype table to a new table
+    TableAdd(copy, t)
+    return copy -- Return the new object!
+end

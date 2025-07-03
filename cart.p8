@@ -14,7 +14,7 @@ __lua__
 #include RP-Base/Sprite.lua
 #include RP-Base/Obj.lua
 --#include objs/Explosion.lua
---#include objs/Caution.lua
+#include objs/Caution.lua
 #include objs/Bullet.lua
 --#include objs/Ship.lua
 #include objs/Player.lua

@@ -22,8 +22,6 @@ function BulletMake(t)
     local t = t or {} -- Allows user to pass in values
     local copy = deepcopy(ObjMake(Bullet.proto)) -- Copy the prototype table to a new table
     -- Update copy with values from t
-    for k,v in pairs(t) do
-        copy[k] = v
-    end
+    TableAdd(copy, t)
     return copy -- Return the new object!
 end

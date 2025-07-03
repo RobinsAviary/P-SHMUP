@@ -90,10 +90,26 @@ function deepcopy(orig)
 end
 
 function DrawRect(rct, color)
-	rect(rct.x, rct.y, rct.x + rct.w, rct.y + rct.h, color)
+	rect(rct.x, rct.y, rct.x + rct.w - 1, rct.y + rct.h - 1, color)
 end
 
 function DrawHull(obj, color)
 	local rct = RectMake(obj.p.x + obj.hull.x, obj.p.y + obj.hull.y, obj.hull.w, obj.hull.h)
 	DrawRect(rct, color)
+end
+
+function Clamp(val, mn, mx)
+	if val < mn then
+		return mn
+	elseif val > mx then
+		return mx
+	end
+
+	return val
+end
+
+function TableAdd(t, tToAdd)
+    for k,v in pairs(tToAdd) do
+        t[k] = v
+    end
 end

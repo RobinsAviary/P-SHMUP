@@ -1,5 +1,5 @@
 function PlayerStep(self)
-    self.p = Vec2Add(self.p, Vec2Mul(Input, Vec2MakeS(.5)))
+    self.p = Vec2Add(self.p, Vec2Mul(Input, Vec2MakeS(self.spd)))
 
     if Input.zp then
         add(Objs, BulletMake({
@@ -18,6 +18,8 @@ function PlayerStep(self)
         s.i = 1
         s.fh = false
     end
+
+    ObjLimitBounds(self,RectMake(32 - 4, 0, 64 + 8, 128))
 end
 
 function PlayerDraw(self)
@@ -26,9 +28,6 @@ function PlayerDraw(self)
     end
     --spr(9, self.p.x, self.p.y)
     DrawSelf(self)
-    DrawHull(self, 5)
-
-    rect(50,50,50 + 2, 50 + 2,3)
 end
 
 Player = {}
@@ -41,6 +40,7 @@ Player.proto = {
     layer="player",
     animFlag = 0,
     hull = RectMake(-1,-1,2,2),
+    spd = .75,
 }
 
 function CallbackTest(o)
@@ -55,10 +55,7 @@ end
 function PlayerMake(t)
     local t = t or {} -- Allows user to pass in values
     local copy = deepcopy(ObjMake(Player.proto)) -- Copy the prototype table to a new table
-    -- Update copy with values from t
-    for k,v in pairs(t) do
-        copy[k] = v
-    end
+    TableAdd(copy, t)
 
     copy.coroutines = {
         cocreate(CallbackTest)
