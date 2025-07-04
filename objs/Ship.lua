@@ -1,3 +1,4 @@
+-- oShip
 -- Used for enemy ships only, as they have different movement
 
 Ship = Obj:new({

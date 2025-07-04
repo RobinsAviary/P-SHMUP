@@ -1,3 +1,5 @@
+-- Globals
+
 CautionBar = {}
 Stars = {}
 Bullets = {}
@@ -9,3 +11,5 @@ Players = {}
 PlayerUpper = 64 + 16
 
 LogoTile = 32
+
+Score = 0

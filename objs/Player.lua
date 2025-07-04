@@ -1,3 +1,5 @@
+-- oPlayer
+
 function PlayerStep(self)
     self.p = Vec2Add(self.p, Vec2Mul(Input, Vec2MakeS(self.spd)))
 
@@ -19,7 +21,7 @@ function PlayerStep(self)
         s.fh = false
     end
 
-    ObjLimitBounds(self,RectMake(32 - 4, 0, 64 + 8, 128))
+    ObjLimitBounds(self,RectMake(32 - 4, 128 - PlayerUpper, 64 + 8, PlayerUpper))
 end
 
 function PlayerDraw(self)
@@ -40,10 +42,10 @@ Player.proto = {
     layer="player",
     animFlag = 0,
     hull = RectMake(-1,-1,2,2),
-    spd = .75,
+    spd = 1,
 }
 
-function CallbackTest(o)
+function FlameAnim(o)
     while true do
         wait(30)
         o.animFlag = 1
@@ -58,7 +60,7 @@ function PlayerMake(t)
     TableAdd(copy, t)
 
     copy.coroutines = {
-        cocreate(CallbackTest)
+        cocreate(FlameAnim)
     }
 
     return copy -- Return the new object!

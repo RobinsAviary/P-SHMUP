@@ -1,3 +1,5 @@
+-- R-Space Utility
+
 function iteratecollection(coll)
 	for item in all(coll) do
 		item:step()
@@ -106,10 +108,4 @@ function Clamp(val, mn, mx)
 	end
 
 	return val
-end
-
-function TableAdd(t, tToAdd)
-    for k,v in pairs(tToAdd) do
-        t[k] = v
-    end
 end

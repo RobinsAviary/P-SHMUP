@@ -1,3 +1,4 @@
+-- oStar
 StarSpdOffset = {
     x = 0,
     y = 0,

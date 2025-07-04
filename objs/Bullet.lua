@@ -1,3 +1,4 @@
+-- oBullet
 Bullet = {}
 
 function BulletStep(self)

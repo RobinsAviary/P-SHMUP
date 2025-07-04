@@ -1,3 +1,5 @@
+-- oPlanet
+
 SpriteOptions = {
     20,
     22,
